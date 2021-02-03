@@ -90,7 +90,7 @@ public class Main {
             long startTime = System.nanoTime();
             for (int i = 0; i < n; i++){//both scenarios and both queues
                 //enqueue
-                SSQueue.enqueue(i);
+                SSQueue.enqueue(i);//uh
             }
             for (int i = 0; i < n; i++) {//scenario 2 and both queues
                 //if(Math.random()<.5)enqueue
