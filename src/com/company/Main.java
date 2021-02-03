@@ -36,22 +36,11 @@ public class Main {
         for (int n:new int[] {20, 50, 100, 1000, 10000, 100000, 1000000}) {
             long startTime = System.nanoTime();
             for (int i = 0; i < n; i++){//both scenarios and both queues
-                CAQueue.enqueue(i + n);
-                SSQueue.enqueue(i + n);
-                if (Math.random() < 0.5){
-                    CAQueue.enqueue(i + n);
-                    SSQueue.enqueue(i + n);
-                }
-                else {
-                    CAQueue.dequeue();
-                    SSQueue.dequeue();
-                }
+                CAQueue.enqueue(i);
             }
             for (int i = 0; i < n; i++){//scenario 1 and both queues
-                CAQueue.enqueue(i);
-                SSQueue.enqueue(i);
+                CAQueue.enqueue(i + n);
                 CAQueue.dequeue();
-                SSQueue.dequeue();
             }
             long endTime = System.nanoTime();
             long totalTime = endTime - startTime;
@@ -62,10 +51,13 @@ public class Main {
             long startTime = System.nanoTime();
             for (int i = 0; i < n; i++){//both scenarios and both queues
                 //enqueue
+                SSQueue.enqueue(i);
             }
             for (int i = 0; i < n; i++){//scenario 1 and both queues
                 //enqueue
                 //dequee
+                CAQueue.enqueue(i + n);
+                CAQueue.dequeue();
             }
             long endTime = System.nanoTime();
             long totalTime = endTime - startTime;
@@ -76,11 +68,18 @@ public class Main {
             long startTime = System.nanoTime();
             for (int i = 0; i < n; i++){//both scenarios and both queues
                 //enqueue
+                CAQueue.enqueue(i);
             }
             for (int i = 0; i < n; i++) { //scenario2 and both queues
                 //if(Math.random()<.5)enqueue
                 //else
                 //dequee
+                if (Math.random() < 0.5){
+                    CAQueue.enqueue(i + n);
+                }
+                else {
+                    CAQueue.dequeue();
+                }
             }
             long endTime = System.nanoTime();
             long totalTime = endTime - startTime;
@@ -91,16 +90,22 @@ public class Main {
             long startTime = System.nanoTime();
             for (int i = 0; i < n; i++){//both scenarios and both queues
                 //enqueue
+                SSQueue.enqueue(i);
             }
             for (int i = 0; i < n; i++) {//scenario 2 and both queues
                 //if(Math.random()<.5)enqueue
                 //else
-                //dequee
+                //dequeue
+                if (Math.random() < 0.5){
+                    SSQueue.enqueue(i + n);
+                }
+                else {
+                    SSQueue.dequeue();
+                }
             }
             long endTime = System.nanoTime();
             long totalTime = endTime - startTime;
             System.out.println(n + ", " + totalTime);
         }
-
     }
 }

@@ -9,9 +9,7 @@ public class MyStack {
     }
 
     public Object pop(){
-        Object element = stack.get(stack.size() - 1);
-        stack.remove(stack.size() - 1);
-        return element;
+        return stack.remove(stack.size() - 1) ;
     }
     public void push(Object element){
         stack.add(element);
