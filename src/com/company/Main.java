@@ -3,7 +3,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        //CAQueue Implementation
+        //CAQueue Implementation Test
         CircularArrayQueue CAQueue = new CircularArrayQueue(5);
 
         System.out.print("CAQueue Enqueue: ");
@@ -20,7 +20,7 @@ public class Main {
 
         System.out.println();
 
-        //StackQueue Implementation
+        //StackQueue Implementation Test
         StackQueue SSQueue = new StackQueue();
         System.out.print("SSQueue Enqueue: ");
         SSQueue.enqueue(1);
@@ -32,13 +32,13 @@ public class Main {
         System.out.println(SSQueue.dequeue());
         System.out.println();
 
-        //CAQUEUE for this one
+        //CAQueue Scenario 1
         for (int n:new int[] {20, 50, 100, 1000, 10000, 100000, 1000000}) {
             long startTime = System.nanoTime();
-            for (int i = 0; i < n; i++){//both scenarios and both queues
+            for (int i = 0; i < n; i++){
                 CAQueue.enqueue(i);
             }
-            for (int i = 0; i < n; i++){//scenario 1 and both queues
+            for (int i = 0; i < n; i++){
                 CAQueue.enqueue(i + n);
                 CAQueue.dequeue();
             }
@@ -46,16 +46,14 @@ public class Main {
             long totalTime = endTime - startTime;
             System.out.println(n + ", " + totalTime);
         }
-        //SSQUEUE for this one
+
+        //SSQueue Scenario 1
         for (int n:new int[] {20, 50, 100, 1000, 10000, 100000, 1000000}) {
             long startTime = System.nanoTime();
-            for (int i = 0; i < n; i++){//both scenarios and both queues
-                //enqueue
+            for (int i = 0; i < n; i++){
                 SSQueue.enqueue(i);
             }
-            for (int i = 0; i < n; i++){//scenario 1 and both queues
-                //enqueue
-                //dequee
+            for (int i = 0; i < n; i++){
                 CAQueue.enqueue(i + n);
                 CAQueue.dequeue();
             }
@@ -63,17 +61,14 @@ public class Main {
             long totalTime = endTime - startTime;
             System.out.println(n + ", " + totalTime);
         }
-        //CAQUEUE for this one
+
+        //CAQueue Scenario 2
         for (int n:new int[] {20, 50, 100, 1000, 10000, 100000, 1000000}) {
             long startTime = System.nanoTime();
-            for (int i = 0; i < n; i++){//both scenarios and both queues
-                //enqueue
+            for (int i = 0; i < n; i++){
                 CAQueue.enqueue(i);
             }
-            for (int i = 0; i < n; i++) { //scenario2 and both queues
-                //if(Math.random()<.5)enqueue
-                //else
-                //dequee
+            for (int i = 0; i < n; i++) {
                 if (Math.random() < 0.5){
                     CAQueue.enqueue(i + n);
                 }
@@ -85,17 +80,14 @@ public class Main {
             long totalTime = endTime - startTime;
             System.out.println(n + ", " + totalTime);
         }
-        //SSQUEUE for this one
+
+        //SSQueue Scenario 2
         for (int n:new int[] {20, 50, 100, 1000, 10000, 100000, 1000000}) {
             long startTime = System.nanoTime();
-            for (int i = 0; i < n; i++){//both scenarios and both queues
-                //enqueue
-                SSQueue.enqueue(i);//uh
+            for (int i = 0; i < n; i++){
+                SSQueue.enqueue(i);
             }
-            for (int i = 0; i < n; i++) {//scenario 2 and both queues
-                //if(Math.random()<.5)enqueue
-                //else
-                //dequeue
+            for (int i = 0; i < n; i++) {
                 if (Math.random() < 0.5){
                     SSQueue.enqueue(i + n);
                 }
